@@ -2,13 +2,15 @@
 
 <p>
   <strong>Name:</strong>
-  <%= @listing.name %>
+  <%= @listings.name %>
 </p>
 
 <p>
   <strong>Desctription:</strong>
-  <%= @listing.desctription %>
+  <%= @listings.desctription %>
 </p>
 
-<%= link_to 'Edit', edit_listing_path(@listing) %> |
+<% if @user = @listings.user_id %>
+  <%= link_to 'Edit', edit_listing_path(@listing) %>
+<% end %>|
 <%= link_to 'Back', listings_path %>

@@ -1,16 +1,21 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /listings
   # GET /listings.json
   def index
     @listings = Listing.all
+    @user = current_user.id
   end
 
   # GET /listings/1
   # GET /listings/1.json
   def show
+    @listings = Listing.find(params[:id])
+    @user = current_user.id
   end
+  
 
   # GET /listings/new
   def new
@@ -25,7 +30,7 @@ class ListingsController < ApplicationController
   # POST /listings.json
   def create
     @listing = Listing.new(listing_params)
-
+    @listing[:user_id] = current_user.id
     respond_to do |format|
       if @listing.save
         format.html { redirect_to @listing, notice: 'Listing was successfully created.' }
