@@ -1,0 +1,16 @@
+<h1>Transactions</h1>
+
+<div class="index">
+  <% @purchased.each do |listing| %>
+    <div class="card" style="width: 18rem;">
+      <%= image_tag listing.picture, class: "card-img-top" if listing.picture.attached?%>
+      <div class="card-body">
+        <h5 class="card-title"><%= listing.name %></h5>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+
+

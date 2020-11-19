@@ -1,5 +1,5 @@
 class Transaction < ApplicationRecord
   belongs_to :buyer, class_name: 'User'
   belongs_to :seller, class_name: 'User'
-  belongs_to :listings
+  belongs_to :listing
 end

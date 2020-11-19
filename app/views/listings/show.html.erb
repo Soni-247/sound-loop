@@ -1,17 +1,26 @@
+
+<div class="show-box">
 <p id="notice"><%= notice %></p>
 
-<%= image_tag @listing.picture, class: "card-img-top" if @listing.picture.attached?%>
-<p>
-  <strong>Name:</strong>
-  <%= @listings.name %>
-</p>
+<div class="show-img">
+  <%= image_tag @listing.picture, class: "card-img-top" if @listing.picture.attached?%>
+</div>
 
-<p>
-  <strong>Desctription:</strong>
-  <%= @listings.desctription %>
-</p>
+<div class="show-body">
+  <p>
+    <strong>Name:</strong>
+    <%= @listing.name %>
+  </p>
 
-<% if current_user && @user_id == @listing.user_id %>
-  <%= link_to 'Edit', edit_listing_path(@listing) %>
-<% end %>
-<%= link_to 'Back', listings_path %>
+  <p>
+    <strong>Desctription:</strong>
+    <%= @listing.desctription %>
+  </p>
+
+  <% if current_user && @user_id == @listing.user_id %>
+    <%= link_to 'Edit', edit_listing_path(@listing) %>
+  <% else %>
+    <%= link_to 'Add to cart', new_listing_transaction_path(@listing) %>
+  <% end %>
+    <%= link_to 'Back', listings_path %>
+</div>

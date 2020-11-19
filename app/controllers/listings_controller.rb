@@ -5,7 +5,9 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
-    @listings = Listing.all
+    
+    @listings = Listing.where sold: nil
+    
     if current_user
       @user_id = current_user.id
     end
@@ -14,7 +16,7 @@ class ListingsController < ApplicationController
   # GET /listings/1
   # GET /listings/1.json
   def show
-    @listings = Listing.find(params[:id])
+    @listing = Listing.find(params[:id])
     if current_user
       @user_id = current_user.id
     end

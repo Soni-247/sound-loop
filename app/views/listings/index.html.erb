@@ -8,17 +8,13 @@
       <%= image_tag listing.picture, class: "card-img-top" if listing.picture.attached?%>
       <div class="card-body">
         <h5 class="card-title"><%= listing.name %></h5>
-        <p class="card-text"><%= listing.desctription %></p>
       </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Price</li>
-      </ul>
       <div class="card-body">
-        <%= link_to 'Show', listing %>
-        <% if current_user && @user_id == listing.user_id %>
-          <%= link_to 'Edit', edit_listing_path(listing) %></td>
-          <%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
+      <%= link_to 'More details', listing %>
+      <% if current_user && @user_id == listing.user_id %>
+        <%= link_to 'Edit', edit_listing_path(listing) %></td>
+        <%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
       </div>
     </div>
   <% end %>
