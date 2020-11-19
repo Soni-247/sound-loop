@@ -6,14 +6,18 @@ class ListingsController < ApplicationController
   # GET /listings.json
   def index
     @listings = Listing.all
-    @user = current_user.id
+    if current_user
+      @user_id = current_user.id
+    end
   end
 
   # GET /listings/1
   # GET /listings/1.json
   def show
     @listings = Listing.find(params[:id])
-    @user = current_user.id
+    if current_user
+      @user_id = current_user.id
+    end
   end
   
 
@@ -74,6 +78,6 @@ class ListingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def listing_params
-      params.require(:listing).permit(:name, :desctription)
+      params.require(:listing).permit(:name, :desctription, :picture)
     end
 end
